@@ -38,7 +38,7 @@ function App({ createWebChatInstance }) {
   }, [createWebChatInstance]);
 
   function customResponseHandler(event) {
-    setCustomResponseEvents(customResponseEvents.concat(event));
+    setCustomResponseEvents(oldArray => [...oldArray, event]);
   }
 
   return (

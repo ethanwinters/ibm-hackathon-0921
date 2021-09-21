@@ -24,6 +24,7 @@ function Product({ message }) {
     <div className="Product">
       {!itemData && <SkeletonPlaceholder style={{ width: "100%", height: "250px" }} />}
       {itemData && (
+        <>
         <Tile>
           <img
             alt={itemData.imageDetails?.Image.description}
@@ -33,6 +34,8 @@ function Product({ message }) {
           <strong>{itemData.Item.description}</strong><br />
           <em>{itemData.qty} currently in stock.</em>
         </Tile>
+        <br />
+        </>
       )}
     </div>
   );
