@@ -26,13 +26,15 @@ router.get('/:itemID', function(req, res, next) {
     const config = {
       headers: { Authorization: `Bearer ${data.access_token}` }
     };
-    axios.get(`https://api.lightspeedapp.com/API/Account/262805/Item/${itemID}.json`, config).then(({ data }) => {
-      const itemDetails = data;
-      axios.get(`https://api.lightspeedapp.com/API/Account/262805/Item/${itemID}/Image.json`, config).then(({ data }) => {
-        itemDetails.imageDetails = data;
-        res.json(itemDetails);
-      });
-    })
+    const getInventory = axios.get(`https://api.lightspeedapp.com/API/Account/262805/InventoryCountItem.json`, config);
+    const getItem = axios.get(`https://api.lightspeedapp.com/API/Account/262805/Item/${itemID}.json`, config);
+    const getImage = axios.get(`https://api.lightspeedapp.com/API/Account/262805/Item/${itemID}/Image.json`, config);
+    Promise.all([getInventory, getItem, getImage]).then(([inventory, item, image]) => {
+      const itemDetails = item.data;
+      itemDetails.imageDetails = image.data;
+      itemDetails.inventory = inventory.data;
+      res.json(itemDetails);
+    });
   });
 });
 

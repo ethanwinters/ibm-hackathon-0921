@@ -1,5 +1,6 @@
 
-import { useEffect, useState, ReactDOM } from 'react';
+import { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import { withWebChat } from '@watson-conversation/watson-assistant-web-chat-react';
 
 import Product from './responseTypes/Product';
@@ -14,9 +15,9 @@ function App({ createWebChatInstance }) {
     let instance;
     if (createWebChatInstance) {
       createWebChatInstance({
-        integrationID: "d6007949-9ad4-4ae5-9080-ed65d5bc2455",
-        region: "us-south",
-        serviceInstanceID: "692e741b-731e-49a9-bf84-4b5b19162321",
+        integrationID: "b4ca0e70-ad01-48b2-89ae-cbfafa3b4b8e", // The ID of this integration.
+        region: "us-south", // The region your integration is hosted in.
+        serviceInstanceID: "692e741b-731e-49a9-bf84-4b5b19162321", // The ID of your service instance.
         onLoad: createdWebChatInstance => {
           if (loaded) {
             instance = createdWebChatInstance;
