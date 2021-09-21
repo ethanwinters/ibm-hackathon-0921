@@ -42,11 +42,7 @@ function App({ createWebChatInstance }) {
   }
 
   return (
-    <>
-      <div className="App">
-        Wow its a website.
-      </div>
-      <>
+    <div className="App">
       {customResponseEvents.map(function mapEvent(event, index) {
         return (
           <CustomResponseComponentPortal key={index} hostElement={event.data.element}>
@@ -54,8 +50,7 @@ function App({ createWebChatInstance }) {
           </CustomResponseComponentPortal>
         );
       })}
-      </>
-    </>
+    </div>
   );
 }
 
