@@ -1,8 +1,16 @@
 #!/usr/bin/env node
+var path = require('path');
+var fs = require('fs');
 
-/**
- * Module dependencies.
- */
+const configFilename = path.resolve(__dirname, '../', '.env.js');
+// eslint-disable-next-line
+if (fs.existsSync(configFilename)) {
+  const global_config = require(configFilename);
+  const keys = Object.keys(global_config);
+  for (var i = 0; i < keys.length; i++) {
+    process.env[keys[i]] = global_config[keys[i]];
+  }
+}
 
 var app = require('./app');
 var debug = require('debug')('backend:server');
