@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "node backend/index.js",
-    "start": "yarn install && cd frontend && react-scripts build && cd .. && node backend/index.js",
+    "start": "node backend/index.js",
     "client": "cd frontend && react-scripts start",
     "server-with-client": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
