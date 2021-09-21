@@ -1,6 +1,6 @@
 .App {
-  background: url('./background.png');
-  background-size: cover;
+  background: url('./background.jpg') top center no-repeat;
+  background-size: 1400px 1800px;
   height: 100vh;
   width: 100%;
 }
